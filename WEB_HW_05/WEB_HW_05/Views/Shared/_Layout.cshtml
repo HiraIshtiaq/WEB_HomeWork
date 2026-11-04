@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Store</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @RenderSection("Styles",required:false)
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/Home/Index">Book Store</a>
+
+            <a class="nav-link text-white" href="/Home/Index">Home</a>
+            <a class="nav-link text-white" href="/Home/About">About</a>
+            <a class="nav-link text-white" href="/Home/Contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <footer class="text-center bg-dark text-white p-3 mt-5">
+        Name: Hira Ishtiaq Roll No: BSEF24A017
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

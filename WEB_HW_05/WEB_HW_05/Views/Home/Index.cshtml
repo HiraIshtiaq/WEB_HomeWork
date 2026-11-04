@@ -1,0 +1,80 @@
+﻿@model WEB_HW_05.Models.ViewModels.HomeViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h2>Add Book</h2>
+<form method="post" action="/Home/AddBook">
+
+    <label>Title</label>
+    <input type="text" name="title" required />
+    <br /><br />
+    <label>Price</label>
+    <input type="number" name="price" required />
+    <br /><br />
+    <label>Author</label>
+    <select name="authorId" required>
+        @foreach (var author in Model.Authors)
+        {
+            <option value="@author.Id">@author.Name</option>
+        }
+    </select>
+    <br /><br />
+    <button type="submit">Add Book</button>
+</form>
+
+<h2>Add Author</h2>
+<form method="post" action="/Home/AddAuthor">
+
+    <label>Name</label>
+    <input type="text" name="name" required />
+    <br /><br />
+    <label>Country</label>
+    <input type="text" name="country" required />
+    <br /><br />
+    <button type="submit">Add Author</button>
+</form>
+
+<h2>Books</h2>
+@if (Model.Books == null || !Model.Books.Any())
+{
+    <p>No books available for now!</p>
+}
+else
+{
+    @foreach (var book in Model.Books)
+    {
+        <div class="book-card">
+            <h3>@book.Title</h3>
+            <p>Author:@book.AuthorName</p>
+            <p>Price:Rs. @book.Price</p>
+            <form method="post" action="/Home/RemoveBook" onsubmit="return confirmRemove();">
+                <input type="hidden" name="id" value="@book.Id" />
+                <button type="submit">Remove</button>
+            </form>
+
+        </div>
+    }
+}
+
+@section Styles 
+{
+    <style>
+        .book-card 
+        {
+            border: solid black;
+            padding: 15px;
+            margin: 10px;
+            width: 250px;
+            background-color: lightcyan;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        function confirmRemove()
+        {
+            return confirm("Remove this book?");
+        }
+    </script>
+}
