@@ -7,7 +7,7 @@ namespace WEB_HW_05.Controllers
 {
     public class HomeController : Controller
     {
-        List<Author> authorList = new List<Author>()
+        static List<Author> authorList = new List<Author>()
         {
             new Author { Id = 1, Name = "Nimra Ahmed",Country = "Pakistan"  },
             new Author { Id = 2, Name = "Umerah Ahmed",Country = "Pakistan" }
